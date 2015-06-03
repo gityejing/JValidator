@@ -1,10 +1,6 @@
 <validate>
-	<value constraint="string" minLen="2" regex="^[1-9]\d*$" />
-
-	<value constraint="int" min="9" />
-
 	<object>
-		<value name="name" constraint="string" minLen="20" />
+		<value name="name" constraint="string" maxLen="5" />
 		<value name="title" constraint="string" minLen="2" />
 	</object>
 </validate>

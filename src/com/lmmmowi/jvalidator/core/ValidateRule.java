@@ -27,7 +27,7 @@ public class ValidateRule {
 			validateRule.items = parser.parse(file);
 			return validateRule;
 		} catch (Throwable e) {
-			throw new ValidateException("Fail to parse rule fule.");
+			throw new ValidateException("Fail to parse rule file.");
 		}
 	}
 

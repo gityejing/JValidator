@@ -13,13 +13,11 @@ public class StringConstraint extends IConstraint {
 
 	@Check(3)
 	private Violation checkType(Object obj) {
-		if (obj == null) {
-			return new Violation(this, obj, "null");
-		} else if (!(obj instanceof String)) {
-			return new Violation(this, obj, "type shold be String");
-		} else {
-			return null;
+		if (!(obj instanceof String)) {
+			return new Violation(this, obj, "Type:[String]");
 		}
+
+		return null;
 	}
 
 	@Check
@@ -67,8 +65,7 @@ public class StringConstraint extends IConstraint {
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(string);
 			if (!matcher.matches()) {
-				return new Violation(this, obj, "Can not match regex "
-						+ regex);
+				return new Violation(this, obj, "Can not match regex " + regex);
 			}
 		}
 

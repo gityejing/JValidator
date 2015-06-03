@@ -12,7 +12,7 @@ public class JValidatorTest extends TestCase {
 
 	@Test
 	public void testValidate() {
-		Object[] params = new Object[] { "22i", "asddas" };
+		Object[] params = new Object[] { "22232", 8, new A() };
 		ValidateRule validateRules = ValidateRule.parse("classpath:valid.xml",
 				new XmlParser());
 

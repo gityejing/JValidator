@@ -9,6 +9,8 @@ import com.lmmmowi.jvalidator.core.Violation;
 
 public abstract class IConstraint {
 
+	public static final String NULL = "null";
+
 	protected Map<String, String> conditions;
 
 	public Map<String, String> getConditions() {
@@ -46,18 +48,25 @@ public abstract class IConstraint {
 			}
 		}
 
-		// check
-		for (Method method : methods) {
-			try {
-				method.setAccessible(true);
-				Object returnObj = method.invoke(this, obj);
-				method.setAccessible(false);
+		// check null
+		if (obj == null && conditions.get(NULL) == null) {
+			return new Violation(this, obj, "null");
+		}
 
-				if (returnObj != null) {
-					return (Violation) returnObj;
+		// checks
+		if (obj != null) {
+			for (Method method : methods) {
+				try {
+					method.setAccessible(true);
+					Object returnObj = method.invoke(this, obj);
+					method.setAccessible(false);
+
+					if (returnObj != null) {
+						return (Violation) returnObj;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		}
 

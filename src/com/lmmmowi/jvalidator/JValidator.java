@@ -28,6 +28,10 @@ public class JValidator {
 			List<Violation> list = validateItem.validate(params[i]);
 
 			if (list != null) {
+				for (Violation violation : list) {
+					violation.setParamIndex(i);
+				}
+
 				violations.addAll(list);
 			}
 		}

@@ -10,6 +10,10 @@ public class ConstraintFactory {
 	public static IConstraint getConstraint(String name) {
 		if (STRING.equals(name)) {
 			return new StringConstraint();
+		} else if (INT.equals(name)) {
+			return new IntConstraint();
+		} else if (FLOAT.equals(name)) {
+			return new FloatConstraint();
 		}
 
 		return null;
